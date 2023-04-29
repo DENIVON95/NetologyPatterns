@@ -1,7 +1,5 @@
 package ru.netology.tests;
 
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.models.User;
@@ -19,7 +17,6 @@ public class CardDeliveryTest extends BaseTest {
     @BeforeEach
     public void openMainPage() {
         cardApplicationForm = new CardApplicationForm();
-        cardApplicationForm.open();
         user = DataGenerator.createRandomUser();
     }
 
@@ -100,11 +97,6 @@ public class CardDeliveryTest extends BaseTest {
                 .clickSubmitButton()
                 .dateValidationShouldHaveText(INCORRECT_DATE.getValue());
 
-    }
-
-    @AfterEach
-    public void tearDown() {
-        Selenide.closeWebDriver();
     }
 
 }

@@ -35,10 +35,9 @@ public class CardApplicationForm {
     private final SelenideElement submitButtonIcon = $(".button__icon > span");
 
 
-    public CardApplicationForm open() {
+    public CardApplicationForm() {
         Selenide.open("/");
         mainElement.shouldBe(visible);
-        return this;
     }
 
 
@@ -102,12 +101,12 @@ public class CardApplicationForm {
     public CardApplicationForm submitButtonShouldHaveSpinner() {
         submitButtonIcon
                 .shouldBe(visible)
-                .shouldHave(attribute("class", "spin spin_size_m spin_visible spin_theme_alfa-on-color"));
+                .shouldHave(attribute("class", "spin_visible"));
         return this;
     }
 
     public CardApplicationForm submitButtonShouldNotHaveSpinner() {
-        submitButtonIcon.shouldHave(attribute("class", "spin spin_size_m spin_theme_alfa-on-color"),
+        submitButtonIcon.shouldNotHave(attribute("class", "spin_visible"),
                 Duration.ofSeconds(15));
         return this;
     }

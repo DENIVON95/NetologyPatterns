@@ -12,17 +12,6 @@ public abstract class BaseTest {
     public static void setup() {
         Configuration.baseUrl = "http://localhost:7777";
         Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless"));
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--start-fullscreen", "--start-incognito");
-        Configuration.browser = "chrome";
-        Configuration.browserCapabilities = options;
-        Configuration.browserSize = "1920x1080";
     }
 
-    @AfterEach
-    public void tearDown() {
-        Selenide.closeWebDriver();
-    }
 }
